@@ -1,0 +1,44 @@
+type Exercise {
+   id: ID! @id @unique
+   name: String!
+   author: Member!
+   weight: String
+   lifts: [Lift]
+   notes: String
+   deleteThis: String
+   createdAt: DateTime! @createdAt
+   updatedAt: DateTime @updatedAt
+}
+
+type Lift {
+   id: ID! @id @unique
+   author: Member!
+   exercise: Exercise
+   weight: String
+   score: String!
+   createdAt: DateTime! @createdAt
+   updatedAt: DateTime @updatedAt
+}
+
+type Member {
+  id: ID! @id @unique
+  displayName: String!
+  avatar: String
+  email: String! @unique
+  password: String!
+  role: Role
+  resetToken: String
+  resetTokenExpiry: Float
+  exercises: [Exercise!]
+  lifts: [Lift!]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+enum Role {
+  Admin
+  Editor
+  Moderator
+  Member
+  LiteMember
+}

@@ -1,0 +1,13 @@
+# import * from './generated/prisma.graphql'
+
+type Query {
+   id: ID
+}
+
+type Mutation {
+   id: ID
+}
+
+type Subscription {
+   id: ID
+}
