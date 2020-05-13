@@ -17,26 +17,16 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
-// app.use((req, res, next) => {
-//    const { token } = req.cookies;
-//    if (token) {
-//       const { memberId } = jwt.verify(token, process.env.APP_SECRET);
-//       req.memberId = memberId;
-//    }
-//    next();
-// });
-
-// app.use(async (req, res, next) => {
-//    if (!req.memberId) return next();
-//    const member = await db.query.member(
-//       { where: { id: req.memberId } },
-//       '{id role rep}'
-//    );
-//    req.member = member;
-//    next();
-// });
+app.use((req, res, next) => {
+   const { token } = req.cookies;
+   if (token) {
+      const { memberId } = jwt.verify(token, process.env.APP_SECRET);
+      req.memberId = memberId;
+   }
+   next();
+});
 
 server.applyMiddleware({
    app,

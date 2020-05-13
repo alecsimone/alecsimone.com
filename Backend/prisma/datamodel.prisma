@@ -5,7 +5,6 @@ type Exercise {
    weight: String
    lifts: [Lift]
    notes: String
-   deleteThis: String
    createdAt: DateTime! @createdAt
    updatedAt: DateTime @updatedAt
 }

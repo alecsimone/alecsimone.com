@@ -1,4 +1,6 @@
-endpoint: ${env:PRISMA_ENDPOINT}
+# endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://alecsimone-4bae3fa474.herokuapp.com/asc-prod/prod
+secret: ${env:PRISMA_SECRET}
 datamodel: datamodel.prisma
 
 generate:

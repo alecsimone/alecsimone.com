@@ -1,13 +1,28 @@
 # import * from './generated/prisma.graphql'
 
 type Query {
-   id: ID
+   me: Member
+   exercises(where: ExerciseWhereInput): Member
 }
 
 type Mutation {
-   id: ID
+   signup(
+    email: String!
+    password: String!
+    displayName: String!
+  ): Member!
+  login(email: String!, password: String!): Member!
+  logout: SuccessMessage
+  addExercise: Member!
+  addLift(exercise: ID!, weight: String!, score: String!, notes: String): Exercise
+  updateExercise(exercise: ID!, name: String!, weight: String!, notes: String): Exercise
+  deleteExercise(id: ID!): Member
 }
 
 type Subscription {
-   id: ID
+   me: MemberSubscriptionPayload
+}
+
+type SuccessMessage {
+  message: String
 }
